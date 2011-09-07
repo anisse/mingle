@@ -68,7 +68,7 @@ filters = {
 
 
 message1 = [
-        ["string", "Real men don't."],
+        ["string", "Mingle boggles your mind."],
         ["pyencode", "base64"],
         ["pyformat", '"%s"'],
 
@@ -97,7 +97,7 @@ message1 = [
         ]
 # Same as message1, but with base64 instead of repr (much shorter output)
 message2 = [
-        ["string", "Real men don't."],
+        ["string", "Mingle is quite useless, too."],
         ["pyencode", "base64"],
         ["pyformat", '"%s"'],
 
@@ -128,7 +128,7 @@ message2 = [
         ]
 
 # Show a message and open a webpage
-web1 = [
+web = [
         ["string", "https://github.com/anisse/mingle"],
         ["pyencode", "base64"],
         ["repr", None],
@@ -140,7 +140,11 @@ web1 = [
         ["pyformat", "exec"],
 
         ["pyencode", "zlib"],
-        ["repr", None],
+
+        ["pyencode", "base64"],
+        ["pyformat", '"%s"'],
+        ["pydecode", '"base64"'],
+
         ["pydecode", '"zlib"'],
 
         ["pyformat", "exec"],
@@ -150,39 +154,6 @@ web1 = [
         ["pyformat", '"%s"'],
         ["pyformat", "cmd"],
         #["pyformat", "histdisable"], #for bash debug only
-
-        ["pyencode", "base64"],
-        ["pyformat", "echone"],
-        ["pypipedecode", "'base64'"],
-        ["pyformat", "shexec"],
-        ["pyencode", "hex_codec"],
-        ]
-# Same as web1, but with base64 instead of repr (much shorter output)
-web2 = [
-        ["string", "https://github.com/anisse/mingle"],
-        ["pyencode", "base64"],
-        ["repr", None],
-        ["pydecode", '"base64"'],
-        ["pyformat", "webopen"],
-
-        ["pyformat", 'print "What have I done ?";%s'],
-        ["repr", None],
-        ["pyformat", "exec"],
-
-        ["pyencode", "zlib"],
-
-        ["pyencode", "base64"],
-        ["pyformat", '"%s"'],
-        ["pydecode", '"base64"'],
-
-        ["pydecode", '"zlib"'],
-
-        ["pyformat", "exec"],
-
-        ["escape", '"'],
-        ["shell_clean", None],
-        ["pyformat", '"%s"'],
-        ["pyformat", "cmd"],
 
         ["pyencode", "base64"],
         ["pyformat", "echone"],
@@ -201,7 +172,7 @@ def mingle(steps, debug=False):
     print s
 
 def main():
-    mingle(web2, True)
+    mingle(web, True)
 
 if __name__ == "__main__":
     main()
