@@ -6,12 +6,11 @@ def pyencode(s, codec):
         enc = "".join(enc[:-1].split()) #delete end with \n and put on one line
     return "%s"%enc
 
-# TODO: Allow chosing of quote type: 'codec' or "codec"
 def pydecode(s, codec):
-    return '%s.decode("%s")'%(s,codec)
+    return '%s.decode(%s)'%(s,codec)
 
 def pypipedecode(s, codec):
-    return '%s | python -c "import sys; print sys.stdin.read().decode(\'%s\')"'%(s, codec)
+    return '%s | python -c "import sys; print sys.stdin.read().decode(%s)"'%(s, codec)
 
 def pyformat(s, format):
     if format == "print":
@@ -73,7 +72,7 @@ message1 = [
         ["pyencode", "base64"],
         ["pyformat", '"%s"'],
 
-        ["pydecode", "base64"],
+        ["pydecode", '"base64"'],
 
         ["pyformat", "print"],
         ["pyformat", "'%s'"],
@@ -81,7 +80,7 @@ message1 = [
 
         ["pyencode", "zlib"],
         ["repr", None],
-        ["pydecode", "zlib"],
+        ["pydecode", '"zlib"'],
 
         ["pyformat", "exec"],
 
@@ -92,7 +91,7 @@ message1 = [
 
         ["pyencode", "hex_codec"],
         ["pyformat", "echone"],
-        ["pypipedecode", "hex_codec"],
+        ["pypipedecode", "'hex_codec'"],
         ["pyformat", "shexec"],
         ["pyencode", "hex_codec"],
         ]
@@ -102,7 +101,7 @@ message2 = [
         ["pyencode", "base64"],
         ["pyformat", '"%s"'],
 
-        ["pydecode", "base64"],
+        ["pydecode", '"base64"'],
 
         ["pyformat", "print"],
         ["pyformat", "'%s'"],
@@ -111,8 +110,8 @@ message2 = [
         ["pyencode", "zlib"],
         ["pyencode", "base64"],
         ["pyformat", '"%s"'],
-        ["pydecode", "base64"],
-        ["pydecode", "zlib"],
+        ["pydecode", '"base64"'],
+        ["pydecode", '"zlib"'],
 
         ["pyformat", "exec"],
 
@@ -123,7 +122,7 @@ message2 = [
 
         ["pyencode", "hex_codec"],
         ["pyformat", "echone"],
-        ["pypipedecode", "hex_codec"],
+        ["pypipedecode", "'hex_codec'"],
         ["pyformat", "shexec"],
         ["pyencode", "hex_codec"],
         ]
@@ -133,7 +132,7 @@ web1 = [
         ["string", "https://github.com/anisse/mingle"],
         ["pyencode", "base64"],
         ["repr", None],
-        ["pydecode", "base64"],
+        ["pydecode", '"base64"'],
         ["pyformat", "webopen"],
 
         ["pyformat", 'print "What have I done ?";%s'],
@@ -142,7 +141,7 @@ web1 = [
 
         ["pyencode", "zlib"],
         ["repr", None],
-        ["pydecode", "zlib"],
+        ["pydecode", '"zlib"'],
 
         ["pyformat", "exec"],
 
@@ -154,7 +153,7 @@ web1 = [
 
         ["pyencode", "base64"],
         ["pyformat", "echone"],
-        ["pypipedecode", "base64"],
+        ["pypipedecode", "'base64'"],
         ["pyformat", "shexec"],
         ["pyencode", "hex_codec"],
         ]
@@ -163,7 +162,7 @@ web2 = [
         ["string", "https://github.com/anisse/mingle"],
         ["pyencode", "base64"],
         ["repr", None],
-        ["pydecode", "base64"],
+        ["pydecode", '"base64"'],
         ["pyformat", "webopen"],
 
         ["pyformat", 'print "What have I done ?";%s'],
@@ -174,9 +173,9 @@ web2 = [
 
         ["pyencode", "base64"],
         ["pyformat", '"%s"'],
-        ["pydecode", "base64"],
+        ["pydecode", '"base64"'],
 
-        ["pydecode", "zlib"],
+        ["pydecode", '"zlib"'],
 
         ["pyformat", "exec"],
 
@@ -187,7 +186,7 @@ web2 = [
 
         ["pyencode", "base64"],
         ["pyformat", "echone"],
-        ["pypipedecode", "base64"],
+        ["pypipedecode", "'base64'"],
         ["pyformat", "shexec"],
         ["pyencode", "hex_codec"],
         ]
@@ -202,7 +201,7 @@ def mingle(steps, debug=False):
     print s
 
 def main():
-    mingle(web2)
+    mingle(web2, True)
 
 if __name__ == "__main__":
     main()
