@@ -68,128 +68,129 @@ filters = {
 }
 
 
-description1 = [
-    ["string", "https://github.com/anisse/mingle"],
-	["pyencode", "base64"],
-    ["repr", None],
-	["pydecode", "base64"],
-	["pyformat", "webopen"],
+message1 = [
+        ["string", "Real men don't."],
+        ["pyencode", "base64"],
+        ["pyformat", '"%s"'],
 
-	["pyformat", 'print "What have I done ?";%s'],
-    ["repr", None],
-	["pyformat", "exec"],
+        ["pydecode", "base64"],
 
-	["pyencode", "zlib"],
-    ["repr", None],
-	["pydecode", "zlib"],
+        ["pyformat", "print"],
+        ["pyformat", "'%s'"],
+        ["pyformat", "exec"],
 
-	["pyformat", "exec"],
+        ["pyencode", "zlib"],
+        ["repr", None],
+        ["pydecode", "zlib"],
 
-    ["escape", '"'],
-    ["shell_clean", None],
-    ["pyformat", '"%s"'],
-	["pyformat", "cmd"],
-#	["pyformat", "histdisable"], #for bash debug only
+        ["pyformat", "exec"],
 
-	["pyencode", "base64"],
-	["pyformat", "echone"],
-	["pypipedecode", "base64"],
-	["pyformat", "shexec"],
-    ["pyencode", "hex_codec"],
-]
-description2 = [
-	["string", "Real men don't."],
-	["pyencode", "base64"],
-    ["pyformat", '"%s"'],
+        ["escape", '"'],
+        ["shell_clean", None],
+        ["pyformat", '"%s"'],
+        ["pyformat", "cmd"],
 
-	["pydecode", "base64"],
+        ["pyencode", "hex_codec"],
+        ["pyformat", "echone"],
+        ["pypipedecode", "hex_codec"],
+        ["pyformat", "shexec"],
+        ["pyencode", "hex_codec"],
+        ]
+# Same as message1, but with base64 instead of repr (much shorter output)
+message2 = [
+        ["string", "Real men don't."],
+        ["pyencode", "base64"],
+        ["pyformat", '"%s"'],
 
-	["pyformat", "print"],
-    ["pyformat", "'%s'"],
-	["pyformat", "exec"],
+        ["pydecode", "base64"],
 
-	["pyencode", "zlib"],
-    ["repr", None],
-	["pydecode", "zlib"],
+        ["pyformat", "print"],
+        ["pyformat", "'%s'"],
+        ["pyformat", "exec"],
 
-	["pyformat", "exec"],
+        ["pyencode", "zlib"],
+        ["pyencode", "base64"],
+        ["pyformat", '"%s"'],
+        ["pydecode", "base64"],
+        ["pydecode", "zlib"],
 
-    ["escape", '"'],
-    ["shell_clean", None],
-    ["pyformat", '"%s"'],
-	["pyformat", "cmd"],
+        ["pyformat", "exec"],
 
-	["pyencode", "hex_codec"],
-	["pyformat", "echone"],
-	["pypipedecode", "hex_codec"],
-	["pyformat", "shexec"],
-	["pyencode", "hex_codec"],
-]
-# Same as description2, but with base64 instead of repr (much shorter output)
-description3 = [
-	["string", "Real men don't."],
-	["pyencode", "base64"],
-    ["pyformat", '"%s"'],
+        ["escape", '"'],
+        ["shell_clean", None],
+        ["pyformat", '"%s"'],
+        ["pyformat", "cmd"],
 
-	["pydecode", "base64"],
+        ["pyencode", "hex_codec"],
+        ["pyformat", "echone"],
+        ["pypipedecode", "hex_codec"],
+        ["pyformat", "shexec"],
+        ["pyencode", "hex_codec"],
+        ]
 
-	["pyformat", "print"],
-    ["pyformat", "'%s'"],
-	["pyformat", "exec"],
+# Show a message and open a webpage
+web1 = [
+        ["string", "https://github.com/anisse/mingle"],
+        ["pyencode", "base64"],
+        ["repr", None],
+        ["pydecode", "base64"],
+        ["pyformat", "webopen"],
 
-	["pyencode", "zlib"],
-	["pyencode", "base64"],
-    ["pyformat", '"%s"'],
-	["pydecode", "base64"],
-	["pydecode", "zlib"],
+        ["pyformat", 'print "What have I done ?";%s'],
+        ["repr", None],
+        ["pyformat", "exec"],
 
-	["pyformat", "exec"],
+        ["pyencode", "zlib"],
+        ["repr", None],
+        ["pydecode", "zlib"],
 
-    ["escape", '"'],
-    ["shell_clean", None],
-    ["pyformat", '"%s"'],
-	["pyformat", "cmd"],
+        ["pyformat", "exec"],
 
-	["pyencode", "hex_codec"],
-	["pyformat", "echone"],
-	["pypipedecode", "hex_codec"],
-	["pyformat", "shexec"],
-	["pyencode", "hex_codec"],
-]
-# Same as description1, but with base64 instead of repr (much shorter output)
-description = [
-    ["string", "https://github.com/anisse/mingle"],
-	["pyencode", "base64"],
-    ["repr", None],
-	["pydecode", "base64"],
-	["pyformat", "webopen"],
+        ["escape", '"'],
+        ["shell_clean", None],
+        ["pyformat", '"%s"'],
+        ["pyformat", "cmd"],
+        #["pyformat", "histdisable"], #for bash debug only
 
-	["pyformat", 'print "What have I done ?";%s'],
-    ["repr", None],
-	["pyformat", "exec"],
+        ["pyencode", "base64"],
+        ["pyformat", "echone"],
+        ["pypipedecode", "base64"],
+        ["pyformat", "shexec"],
+        ["pyencode", "hex_codec"],
+        ]
+# Same as web1, but with base64 instead of repr (much shorter output)
+web2 = [
+        ["string", "https://github.com/anisse/mingle"],
+        ["pyencode", "base64"],
+        ["repr", None],
+        ["pydecode", "base64"],
+        ["pyformat", "webopen"],
 
-	["pyencode", "zlib"],
+        ["pyformat", 'print "What have I done ?";%s'],
+        ["repr", None],
+        ["pyformat", "exec"],
 
-	["pyencode", "base64"], #replaced repr with base64 elements, more economic
-    ["pyformat", '"%s"'],
-	["pydecode", "base64"],
+        ["pyencode", "zlib"],
 
-	["pydecode", "zlib"],
+        ["pyencode", "base64"],
+        ["pyformat", '"%s"'],
+        ["pydecode", "base64"],
 
-	["pyformat", "exec"],
+        ["pydecode", "zlib"],
 
-    ["escape", '"'],
-    ["shell_clean", None],
-    ["pyformat", '"%s"'],
-	["pyformat", "cmd"],
-#	["pyformat", "histdisable"], #for bash debug only
+        ["pyformat", "exec"],
 
-	["pyencode", "base64"],
-	["pyformat", "echone"],
-	["pypipedecode", "base64"],
-	["pyformat", "shexec"],
-    ["pyencode", "hex_codec"],
-]
+        ["escape", '"'],
+        ["shell_clean", None],
+        ["pyformat", '"%s"'],
+        ["pyformat", "cmd"],
+
+        ["pyencode", "base64"],
+        ["pyformat", "echone"],
+        ["pypipedecode", "base64"],
+        ["pyformat", "shexec"],
+        ["pyencode", "hex_codec"],
+        ]
 
 def mingle(steps, debug=False):
     s=""
@@ -201,7 +202,7 @@ def mingle(steps, debug=False):
     print s
 
 def main():
-    mingle(description)
+    mingle(web2)
 
 if __name__ == "__main__":
     main()
