@@ -39,26 +39,20 @@ def shell_sanitize(s, _unused):
 
 def escape(s, delim):
     """ Finds delim and escape it if it's not already escaped """
-#    print "Starting with", s
     i=0
     while i < len(s):
-#        print "i = %s, char = %s"%(i, s[i])
         if s[i] == delim:
             #search backwards for '\' and count them
             count=0
-#            print "match "
             for j in range(i-1, -1, -1):
-#                print j, s[j]
                 if s[j] == '\\':
                     count += 1
                 else:
                     break
-#            print "counted: ", count
             if (count % 2) == 0: #escape if there's a pair number of '\' before
                 s = s[:i] + '\\' + s[i:]
                 i += 1
         i += 1
-#    print "Finished with",s
     return s
 
 
@@ -197,15 +191,17 @@ description = [
     ["pyencode", "hex_codec"],
 ]
 
-def main():
+def mingle(steps, debug=False):
     s=""
-    for level in description:
-#        print level
+    for level in steps:
+        if debug: print level
         if filters.has_key(level[0]):
             s = filters[level[0]](s, level[1])
-#        print s
-#        print len(s)
+        if debug: print "%s\n%s"%(s, len(s))
     print s
+
+def main():
+    mingle(description)
 
 if __name__ == "__main__":
     main()
