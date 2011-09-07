@@ -13,20 +13,17 @@ def pypipedecode(s, codec):
     return '%s | python -c "import sys; print sys.stdin.read().decode(%s)"'%(s, codec)
 
 def pyformat(s, format):
-    if format == "print":
-        return "print %s"%s
-    elif format == "exec":
-        return "exec %s"%s
-    elif format == "cmd":
-        return "python -c %s"%s
-    elif format == "histdisable":
-        return "set +H\n%s\nset -H"%s # Disable history expansion, because it's FUCKING UN-ESCAPABLE !
-    elif format == "echone":
-        return "echo -ne %s"%s
-    elif format == "shexec":
-        return 'sh -c "$(%s)"'%s
-    elif format == "webopen":
-        return 'import webbrowser; webbrowser.open(%s)'%s
+    formats = {
+            "print": "print %s",
+            "exec": "exec %s",
+            "cmd": "python -c %s",
+            "histdisable": "set +H\n%s\nset -H", # Disable history expansion, because it's FUCKING UN-ESCAPABLE !
+            "echone": "echo -ne %s",
+            "shexec": 'sh -c "$(%s)"',
+            "webopen": 'import webbrowser; webbrowser.open(%s)',
+            }
+    if format in formats:
+        return formats[format]%s
     else:
         return format%s
 
