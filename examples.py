@@ -98,7 +98,7 @@ web = [
         ]
 
 def main():
-    mingle(web, True)
+    print mingle(web, True)
 
 if __name__ == "__main__":
     main()

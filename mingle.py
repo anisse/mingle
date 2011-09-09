@@ -72,5 +72,5 @@ def mingle(steps, debug=False):
         if filters.has_key(level[0]):
             s = filters[level[0]](s, level[1])
         if debug: print "%s\n%s"%(s, len(s))
-    print s
+    return s
 
